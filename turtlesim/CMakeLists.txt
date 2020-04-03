@@ -9,14 +9,17 @@ find_package(Boost REQUIRED COMPONENTS thread)
 include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 link_directories(${catkin_LIBRARY_DIRS})
 
-add_message_files(DIRECTORY msg FILES
-                  Color.msg Pose.msg)
+add_message_files(DIRECTORY msg FILES 
+                  Color.msg Pose.msg Circle.msg)
 add_service_files(DIRECTORY srv FILES
                   Kill.srv
                   SetPen.srv
                   Spawn.srv
                   TeleportAbsolute.srv
-                  TeleportRelative.srv)
+                  TeleportRelative.srv
+  		  SpawnCircle.srv
+		  RemoveCircle.srv
+		  GetCircles.srv)
 generate_messages(DEPENDENCIES geometry_msgs std_msgs std_srvs)
 
 catkin_package(CATKIN_DEPENDS geometry_msgs message_runtime std_msgs std_srvs)
